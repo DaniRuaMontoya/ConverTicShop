@@ -2,29 +2,35 @@ package com.convertic.ConverTicShop.model;
 
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "inventario")
 @Getter
 @Setter
-@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+
 
 public class Inventario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_inventario")
-    private int inventario;
-    @Column(name = "id_producto")
-    private int producto;
-    @Column(name = "id_tallas")
-    private int tallas;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Integer id;
+
     @Column(name = "cantidad")
     private int cantidad;
 
+    @ManyToOne
+    private Producto producto;
 
+    @ManyToOne
+    private Tallas tallas;
+
+    @OneToMany(mappedBy = "inventario")
+    List<CarritoCompras> carritoCompras;
 
 }
