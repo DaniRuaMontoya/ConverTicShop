@@ -1,29 +1,45 @@
 package com.convertic.ConverTicShop.controller;
 
 
+import ch.qos.logback.core.model.Model;
 import com.convertic.ConverTicShop.model.Usuario;
 import com.convertic.ConverTicShop.service.UsuarioInterface;
 import com.convertic.ConverTicShop.service.UsuarioService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-@RestController // Define que es un controlador
-@RequestMapping("/api/usuario") // Indica la ruta del endpoint
-@AllArgsConstructor // Genera un constructor vacio
+import java.util.List;
 
-//@RequestBody, para que se puede mapear el objeto jeison a la clase java
-//Esto se hace porque los microservicios van a enviar información en jeison
-//El @PostMapping Indica que va a hacer un método expuesto para que lo consuma otro microservicio
+//@RestController Define que es un controlador
+//@RequestMapping Indica la ruta del endpoint
+//@AllArgsConstructo Genera un constructor vacio
+//@RequestBody, para que se puede mapear el objeto jeison a la clase java.
+//Esto se hace porque los microservicios van a enviar información en jeison.
+//El @PostMapping Indica que va a hacer un método expuesto para que lo consuma otro microservicio. el el crud de crear usuario.
+//@Autowired para poder inyectar en nuestro controlador el servicio.
+// Utilizamos UsuarioInterface en el método para traer el contraro que hicimos en la interface de UsuarioInterface.
+// Endpoint: Un endpoint es cualquier dispositivo que está conectado a una red informática.
+
+@RestController
+@RequestMapping("/api")
+@AllArgsConstructor
+
+
 
 public class UsuarioController {
-    private final UsuarioInterface usuarioService;
 
-    @PostMapping
-    public Usuario saveUsuario(@RequestBody Usuario usuario){
+    @Autowired
+    private  UsuarioService usuarioService;
 
-        return usuarioService.saveUsuario(usuario);
+    @GetMapping("/usuario") // metodo GET para posatman
+    public List<Usuario> listaUsuario(){
+        return usuarioService.listaUsuario();
+    }
+
+
+    @PostMapping("/registrar")
+    public Usuario crearUsuario(@RequestBody Usuario usuario){
+        return usuarioService.registrar(usuario);
     }
 }

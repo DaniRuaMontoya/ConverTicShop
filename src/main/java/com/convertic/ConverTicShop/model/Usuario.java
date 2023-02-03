@@ -6,26 +6,31 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.*;
 
+//@NoArgsConstructor  Constructor Vacío.
+//@AllArgsConstructor Constructor Lleno.
+//@GeneratedValue Indica que es autoincremental en base de datos.
+// length nos dice la cantidad de numeros. validación para BD.
+// nullable para que siempre el campo este lleno. validación para BD.
+//Max son validaciones contra el negocio, esto lo piden en el reto.
 
 @Entity
 @Table(name = "usuario")
 @Getter
 @Setter
-@NoArgsConstructor // Constructor Vacío//
-@AllArgsConstructor // Constructor Lleno//
+@NoArgsConstructor
+@AllArgsConstructor
 public class Usuario {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)//Indica que es autoincremental en base de datos
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
 
-    // length nos dice la cantidad de numeros. validación para BD//
-    // nullable para que siempre el campo este lleno. validación para BD//
+
     @Column(name = "documento", length = 10, nullable = false)
     private Integer documento;
 
-    //Max son validaciones contra el negocio, esto lo piden en el reto//
+
     @Column(name = "nombres", length = 32, nullable = false)// de cara a la BD
     //@Max(value = 32, message = "Los nombres no deben tener mas de 32 caracteres")// validacion de cara a los datos que pueden llegar
     private String nombres;
