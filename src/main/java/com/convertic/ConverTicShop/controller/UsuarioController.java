@@ -32,8 +32,8 @@ public class UsuarioController {
     @Autowired
     private  UsuarioService usuarioService;
 
-    @GetMapping("/usuario") // metodo GET para posatman
-    public List<Usuario> listaUsuario(){
+    @GetMapping // metodo GET para posatman
+    public List<Usuario> usuarioList(){
         return usuarioService.listaUsuario();
     }
 

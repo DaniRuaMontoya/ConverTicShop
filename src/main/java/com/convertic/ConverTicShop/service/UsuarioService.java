@@ -25,10 +25,10 @@ public class UsuarioService  {  //implements UsuarioInterface
     @Autowired
     private UsuarioRepository usuarioRepository;
 
+
     public List<Usuario> listaUsuario(){
         return usuarioRepository.findAll();
     }
-
     public Usuario registrar(Usuario usuario){
         return usuarioRepository.save(usuario);
     }
