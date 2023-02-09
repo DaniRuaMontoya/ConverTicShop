@@ -32,13 +32,14 @@ public class UsuarioController {
     @Autowired
     private  UsuarioService usuarioService;
 
-    @GetMapping // metodo GET para posatman
+    @GetMapping("/lista") // metodo GET para posatman
     public List<Usuario> usuarioList(){
+
         return usuarioService.listaUsuario();
     }
 
 
-    @PostMapping("/registrar")
+    @PostMapping
     public Usuario crearUsuario(@RequestBody Usuario usuario){
         return usuarioService.registrar(usuario);
     }
