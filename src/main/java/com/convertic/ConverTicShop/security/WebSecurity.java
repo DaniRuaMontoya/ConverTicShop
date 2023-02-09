@@ -40,7 +40,7 @@ public class WebSecurity {
     }
 
 
-    // Esto es un método
+    // Esto es un método para la creación del usuario y contraseña
     @Bean
     UserDetailsService userDetailsService(){
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
