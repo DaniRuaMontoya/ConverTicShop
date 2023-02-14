@@ -22,8 +22,8 @@ public class UsuarioService  {  //implements UsuarioInterface
         return usuarioRepository.save(usuario);
     }*/
 
-    @Autowired
-    private UsuarioRepository usuarioRepository;
+
+    private final UsuarioRepository usuarioRepository;
 
 
     public List<Usuario> listaUsuario(){
@@ -31,6 +31,11 @@ public class UsuarioService  {  //implements UsuarioInterface
     }
     public Usuario registrar(Usuario usuario){
         return usuarioRepository.save(usuario);
+    }
+
+    public Usuario consultarPorCorreoElectronico(String correoElectronico){
+        return usuarioRepository.findByCorreoElectronico(correoElectronico);
+
     }
 
 
