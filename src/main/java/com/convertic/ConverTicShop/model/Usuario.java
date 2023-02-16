@@ -6,13 +6,6 @@ import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import lombok.*;
 
-//@NoArgsConstructor  Constructor Vacío.
-//@AllArgsConstructor Constructor Lleno.
-//@GeneratedValue Indica que es autoincremental en base de datos.
-// length nos dice la cantidad de numeros. validación para BD.
-// nullable para que siempre el campo este lleno. validación para BD.
-//Max son validaciones contra el negocio, esto lo piden en el reto.
-
 @Entity
 @Table(name = "usuario")
 @Getter
@@ -46,6 +39,7 @@ public class Usuario {
     @Column(name = "contrasena", nullable = false)
     //@Min(value = 5, message = "La contraseña debe tener mas de 5 caracteres")// desde los atributos//
     private String contrasena;
+
 
 
     @OneToOne
