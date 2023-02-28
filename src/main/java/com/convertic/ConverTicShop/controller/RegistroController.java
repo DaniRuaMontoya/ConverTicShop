@@ -5,10 +5,12 @@ import com.convertic.ConverTicShop.dto.RegistroResponse;
 import com.convertic.ConverTicShop.model.Usuario;
 import com.convertic.ConverTicShop.service.UsuarioService;
 import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 @AllArgsConstructor
 public class RegistroController {
